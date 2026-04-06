@@ -7,8 +7,6 @@ Um dashboard para visualizar o impacto da taggy na preservação do ambiente.
 
 ## Funcionalidades:
 
-Developed functionalities to this project:
-
 - [ ] **Gerenciamento de Veículos**: Nessa funcionalidade será possível inserir diferentes modelos de veículos, bem como suas variáveis (consumo, emissão de CO², etc), para as estimativas dos cĺaculos. A edição, leitura e exclusão dos registros também serão possíveis.
 - [ ] **Gerenciamento de Combustíveis**: Nessa funcionalidade será possível inserir os diferentes tipos de combustíveis (etanol, gasolina, diesel e GNV) para que os cálculos de rendimento sejam mais precisos e adequados aos diferentes motores dos diferentes veículos. Além do cadastro também será possivel: editar, ler e excluir os registros.
 - [ ] **Calculadora de Emissões**: Através dos dados inseridos dos veículos (tipo de motor, consumo, e nível de emissões) associados aos rendimentos dos combustíveis no referidos veículos, o sistema fará um cálculo de emissões em um intervalo de tempo determinado em uma outra funcionalidade.

@@ -1,5 +1,5 @@
 <h1 align="center"><img width="300" src="TAGGY_LOGO.png" />
-<br>Taggy EcoCalc
+<br>EcoCalc
 </h1>
 <p align="center">
 Um dashboard para visualizar o impacto da taggy na preservação do ambiente.

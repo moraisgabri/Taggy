@@ -28,10 +28,12 @@ Developed functionalities to this project:
 ## Diagrama do banco de dados:
 
 <img width="985" height="969" alt="Taggy" src="https://github.com/user-attachments/assets/75cc535b-1fa1-4452-982f-0ec6c3808fb7" />
+
 [ou acesse o dbdiagram diretamente](https://dbdiagram.io/d/Taggy-69d3855b80896296842933f0)
 
 
 # Fluxograma do usuário:
 
 ![Taggy (2)](https://github.com/user-attachments/assets/26c43af9-448f-445c-85ad-f3612905f185)
+
 [ou acesse o Miro diretamente](https://miro.com/app/board/uXjVGmkk5Ko=/?share_link_id=800586848007)

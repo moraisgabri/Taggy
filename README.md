@@ -1,4 +1,4 @@
-<h1 align="center"><img width="300" src="TAGGY_LOGO.svg" />
+<h1 align="center"><img width="300" src="TAGGY_LOGO.png" />
 <br>Taggy EcoCalc
 </h1>
 <p align="center">

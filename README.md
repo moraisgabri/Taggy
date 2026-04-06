@@ -35,5 +35,4 @@ Developed functionalities to this project:
 # Fluxograma do usuário:
 
 ![Taggy (2)](https://github.com/user-attachments/assets/26c43af9-448f-445c-85ad-f3612905f185)
-
 [ou acesse o Miro diretamente](https://miro.com/app/board/uXjVGmkk5Ko=/?share_link_id=800586848007)

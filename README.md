@@ -19,8 +19,8 @@ Um dashboard para visualizar o impacto da taggy na preservação do ambiente.
 ## Dependências
 
 <div>
-  <img width="30" src="https://pics.freeicons.io/uploads/icons/png/14621971553750220-512.png" /> Asp NET Core &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img width="30" src="https://pics.freeicons.io/uploads/icons/png/16876668881551942134-512.png" /> PostgreSQL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img width="50" src="https://pics.freeicons.io/uploads/icons/png/14621971553750220-512.png" /> Asp NET Core &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img width="50" src="https://pics.freeicons.io/uploads/icons/png/16876668881551942134-512.png" /> PostgreSQL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 
 ## Diagrama do banco de dados:

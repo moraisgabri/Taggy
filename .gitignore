@@ -1,0 +1,129 @@
+# =========================
+
+# .NET / ASP.NET Core
+
+# =========================
+
+bin/
+obj/
+out/
+publish/
+
+# User-specific files
+
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+
+Debug/
+Release/
+
+# Logs
+
+*.log
+
+# =========================
+
+# Visual Studio
+
+# =========================
+
+.vs/
+*.vsp
+*.vspx
+*.sap
+
+# Rider
+
+.idea/
+
+# VS Code
+
+.vscode/
+
+# =========================
+
+# OS Files
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# Environment / Secrets
+
+# =========================
+
+.env
+.env.*
+appsettings.Development.json
+appsettings.Local.json
+
+# User secrets (dotnet)
+
+secrets.json
+
+# =========================
+
+# NuGet
+
+# =========================
+
+*.nupkg
+.nuget/
+packages/
+
+# =========================
+
+# Node (if you have frontend)
+
+# =========================
+
+node_modules/
+dist/
+build/
+
+# =========================
+
+# Coverage / Test Results
+
+# =========================
+
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# =========================
+
+# Temporary files
+
+# =========================
+
+*.tmp
+*.temp
+*.swp
+*.cache
+
+# =========================
+
+# Docker
+
+# =========================
+
+docker-compose.override.yml
+
+# =========================
+
+# Misc
+
+# =========================
+
+*.pid
+*.seed
+*.lock.json

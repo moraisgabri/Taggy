@@ -1,31 +1,34 @@
-using Taggy.Application.Services;
+using Microsoft.EntityFrameworkCore;
+using Taggy.API.Helpers;
+using Taggy.Infrastructure.Data;
 
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-var builder = WebApplication.CreateBuilder(args);
+builder.Configuration
+    .SetBasePath(AppContext.BaseDirectory)
+    .AddJsonFile("API/appsettings.json", optional: false, reloadOnChange: false)
+    .AddJsonFile($"API/appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: false)
+    .AddEnvironmentVariables();
 
-builder.Services.AddScoped<AuthService>();
-builder.Services.AddControllers();
+ConfigurationHelper.ConfigureServices(builder);
+ConfigurationHelper.ConfigureAuthentication(builder);
 
-builder.Services.AddOpenApi();
-builder.Services.AddSwaggerGen();
+WebApplication app = builder.Build();
 
-var app = builder.Build();
+ConfigurationHelper.HandleEnvironment(app);
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Automatizar a inserção do código SQL gerado pelo entity framework (Migrations)
+using (var scope = app.Services.CreateScope())
 {
-    app.MapOpenApi();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v2/swagger.json", "Taggy");
-    });
+    Console.Write("Running migrations...");
+    AppDbContext db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await db.Database.MigrateAsync();
 }
 
+// Adiciona os Middlewares (devo colocar em uma função depois)
 app.UseHttpsRedirection();
-
+app.UseCors("AllowAll");
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

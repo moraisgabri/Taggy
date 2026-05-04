@@ -62,7 +62,7 @@ Thumbs.db
 .env
 .env.*
 appsettings.Development.json
-appsettings.Local.json
+appsettings.json
 
 # User secrets (dotnet)
 

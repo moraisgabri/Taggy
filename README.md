@@ -16,11 +16,13 @@ Um dashboard para visualizar o impacto da taggy na preservação do ambiente.
 - [ ] **Compilador de Resultados**: Possibilita exportar os diversos dados e variáveis relacionadas de forma padronizada e editável.
 
 
-## Dependências
+## Tecnologias
 
 <div>
   <img width="50" src="https://pics.freeicons.io/uploads/icons/png/14621971553750220-512.png" /> Asp NET Core &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img width="50" src="https://pics.freeicons.io/uploads/icons/png/16876668881551942134-512.png" /> PostgreSQL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img width="50" src="https://pics.freeicons.io/uploads/icons/png/8467612941536233213-512.png" /> 
+  Docker &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 
 ## Diagrama do banco de dados:

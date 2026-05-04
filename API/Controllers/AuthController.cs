@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Taggy.Application.DTOs;
-using Taggy.Application.Services;
 
 namespace Taggy.API.Controllers;
 
@@ -8,24 +7,26 @@ namespace Taggy.API.Controllers;
 [Route("auth")]
 public class AuthController : ControllerBase
 {
-    private readonly AuthService _authService;
+    private readonly IAuthService authService;
 
-    public AuthController(AuthService authService)
+    public AuthController(IAuthService _authService)
     {
-        _authService = authService;
+        authService = _authService;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterDto dto)
     {
-        try
-        {
-            var token = await _authService.Register(dto);
-            return Ok(new { token });
+        try {
+            return Ok(await authService.Register(dto));
         }
-        catch (Exception ex)
+        catch (InvalidOperationException err)
         {
-            return BadRequest(new { message = ex.Message });
+            return Conflict(new { message =  err.Message });
+        }
+        catch (Exception err)
+        {
+            return BadRequest(new { message = err.Message });
         }
     }
 
@@ -34,12 +35,11 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var token = await _authService.Login(dto);
-            return Ok(new { token });
+            return Ok(await authService.Login(dto));
         }
-        catch
+        catch (Exception err)
         {
-            return Unauthorized(new { message = "Invalid credentials" });
+            return Unauthorized(new { message = err.Message });
         }
     }
 }

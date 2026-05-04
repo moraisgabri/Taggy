@@ -12,7 +12,7 @@ public class EmissionCalculation
     public decimal TotalEmission { get; set; }
     public DateTime CreatedAt { get; set; }
 
-    public Vehicle Vehicle { get; set; }
-    public Fuel Fuel { get; set; }
-    public TimeScale TimeScale { get; set; }
+    required public Vehicle Vehicle { get; set; }
+    required public Fuel Fuel { get; set; }
+    required public TimeScale TimeScale { get; set; }
 }

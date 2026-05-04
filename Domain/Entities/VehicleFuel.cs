@@ -8,6 +8,6 @@ public class VehicleFuel
     public decimal AdjustedConsumption { get; set; }
     public decimal AdjustedEmission { get; set; }
 
-    public Vehicle Vehicle { get; set; }
-    public Fuel Fuel { get; set; }
+    required public Vehicle Vehicle { get; set; }
+    required public Fuel Fuel { get; set; }
 }

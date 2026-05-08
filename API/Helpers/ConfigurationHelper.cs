@@ -59,9 +59,9 @@ class ConfigurationHelper
 
     static public void ConfigureAuthentication(WebApplicationBuilder builder)
     {
-        var jwtConfig = builder.Configuration.GetSection("Jwt");
+        IConfigurationSection jwtConfig = builder.Configuration.GetSection("Jwt");
 
-        var key = Encoding.UTF8.GetBytes(jwtConfig["Secret"]! ?? "asdfasdf");
+        byte[] key = Encoding.UTF8.GetBytes(jwtConfig["Secret"]! ?? "");
 
         builder.Services.AddAuthentication(options =>
         {
@@ -72,14 +72,14 @@ class ConfigurationHelper
         {
             options.TokenValidationParameters = new TokenValidationParameters
             {
-                ValidateIssuer           = true,
-                ValidateAudience         = true,
-                ValidateLifetime         = true,
+                IssuerSigningKey         = new SymmetricSecurityKey(key),
                 ValidateIssuerSigningKey = true,
                 ValidIssuer              = jwtConfig["Issuer"],
+                ValidateIssuer           = true,
                 ValidAudience            = jwtConfig["Audience"],
-                IssuerSigningKey         = new SymmetricSecurityKey(key),
-                ClockSkew                = TimeSpan.Zero
+                ValidateAudience         = true,
+                ClockSkew                = TimeSpan.Zero,
+                ValidateLifetime         = true,
             };
         });
     }

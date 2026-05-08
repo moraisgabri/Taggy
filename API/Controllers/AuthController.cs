@@ -42,4 +42,17 @@ public class AuthController : ControllerBase
             return Unauthorized(new { message = err.Message });
         }
     }
+
+    [HttpPost("getMe")]
+    public async Task<IActionResult> GetMe(GetMeDto dto)
+    {
+        try
+        {
+            return Ok(await authService.GetMe(dto));
+        }
+        catch (Exception err)
+        {
+            return Unauthorized(new { message = err.Message });
+        }
+    }
 }

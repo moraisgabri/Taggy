@@ -5,6 +5,7 @@ using Taggy.Domain.Interfaces;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Taggy.Application.Services;
 
@@ -30,9 +31,10 @@ public class AuthService(IUserRepository _userRepository, IConfiguration _config
         await userRepository.AddAsync(user);
         await userRepository.SaveChangesAsync();
 
-        return new AuthResponseDto{
-            Id = user.Id.ToString(),
-            Name = user.Name,
+        return new AuthResponseDto
+        {
+            Id    = user.Id.ToString(),
+            Name  = user.Name,
             Token = GenerateToken(user),
             Email = user.Email
         };
@@ -41,7 +43,7 @@ public class AuthService(IUserRepository _userRepository, IConfiguration _config
     public async Task<AuthResponseDto> Login(LoginDto loginData)
     {
         User user = await userRepository.GetByEmailAsync(loginData.Email.ToLowerInvariant())
-        ?? throw new UnauthorizedAccessException("Invalid credentials.");
+        ?? throw new InvalidOperationException("Email already taken.");
 
         if (!BCrypt.Net.BCrypt.Verify(loginData.Password, user.Password))
         throw new UnauthorizedAccessException("Invalid credentials.");
@@ -51,6 +53,28 @@ public class AuthService(IUserRepository _userRepository, IConfiguration _config
             Name = user.Name, 
             Email = user.Email,
             Token = GenerateToken(user)
+        };
+    }
+
+    public async Task<GetMeResponseDto> GetMe(GetMeDto dto)
+    {
+        if (dto.Id.Length == 0 || dto == null || dto.Id == null)
+        {
+            throw new InvalidOperationException();
+        }
+
+        User user = await userRepository.GetByIdAsync(
+            new Guid(dto.Id)
+        );
+
+        if (user == null)
+        {
+            throw new InvalidOperationException();
+        }
+
+        return new GetMeResponseDto
+        {
+            UserData = user,
         };
     }
 

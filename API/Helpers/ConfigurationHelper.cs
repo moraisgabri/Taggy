@@ -23,6 +23,7 @@ class ConfigurationHelper
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IAuthService, AuthService>();
         builder.Services.AddScoped<IPdfService, PdfService>();
+        builder.Services.AddScoped<ICalculationService, CalculationService>();
         builder.Services.AddControllers();
 
         // Documentação

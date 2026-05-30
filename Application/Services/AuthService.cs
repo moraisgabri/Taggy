@@ -18,7 +18,7 @@ public class AuthService(IUserRepository _userRepository, IConfiguration _config
         if (await userRepository.ExistsByEmailAsync(registerDto.Email))
             throw new InvalidOperationException("Email already in use.");
 
-        var user = new User
+        User user = new User
         {
             Id        = Guid.NewGuid(),
             Name      = registerDto.Name,

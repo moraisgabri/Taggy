@@ -1,7 +1,6 @@
 using Taggy.Application.Interfaces;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using Taggy.Infrastructure.Repositories;
 using Taggy.Domain.Interfaces;
 using Taggy.Domain.Entities;
 
@@ -12,7 +11,7 @@ class PdfService: IPdfService
 {
   private readonly IUserRepository userRepository;
 
-  public PdfService(UserRepository _userRepository)
+  public PdfService(IUserRepository _userRepository)
   
     {
       userRepository = _userRepository;

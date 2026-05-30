@@ -29,15 +29,12 @@ class UserService: IUserService
 
   public async Task<UserDto> EditUser(EditUserDto editUserDto)
   {
-    User updatedUser = new User
-    {
-        Id = Guid.Parse(editUserDto.Id),
-        Name = editUserDto.Name,
-        Email = editUserDto.Email,
-        Password = editUserDto.Password
-    };
+    User user = await userRepository.GetByIdAsync(Guid.Parse(editUserDto.Id)) ?? throw new Exception("User not found");
 
-    User? editedUser = await userRepository.Edit(updatedUser);
+    user.Name = editUserDto.Name ?? user.Name;
+    user.Email = editUserDto.Email ?? user.Email;
+
+    User? editedUser = await userRepository.Edit(user);
     
     if (editedUser == null)
         throw new Exception("User not found");

@@ -3,6 +3,8 @@ namespace Taggy.Application.Interfaces;
 
 
 public interface IPdfService
+
+// Comment for git example 
 {
   Task<byte[]> GeneratePdf();
 }

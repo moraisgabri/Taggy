@@ -1,7 +1,6 @@
 using Taggy.Application.Interfaces;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using Taggy.Infrastructure.Repositories;
 using Taggy.Domain.Interfaces;
 using Taggy.Domain.Entities;
 
@@ -11,7 +10,7 @@ class UserService: IUserService
 {
   private readonly IUserRepository userRepository;
 
-  public UserService(UserRepository _userRepository)
+  public UserService(IUserRepository _userRepository)
   
     {
       userRepository = _userRepository;
@@ -38,8 +37,11 @@ class UserService: IUserService
         Password = editUserDto.Password
     };
 
-    User editedUser = await userRepository.Edit(updatedUser);
+    User? editedUser = await userRepository.Edit(updatedUser);
     
+    if (editedUser == null)
+        throw new Exception("User not found");
+
     return new UserDto
     {
         Id = editedUser.Id.ToString(),

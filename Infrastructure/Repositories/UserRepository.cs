@@ -27,7 +27,7 @@ public class UserRepository(AppDbContext context) : IUserRepository
         return await context.Users.ToListAsync();
     }   
 
-    public async Task<User> Edit(User updatedUser)
+    public async Task<User?> Edit(User updatedUser)
     {
         context.Users.Update(updatedUser);
         await context.SaveChangesAsync();

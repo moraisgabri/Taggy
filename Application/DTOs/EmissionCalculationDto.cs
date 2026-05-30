@@ -6,7 +6,11 @@ public class EmissionCalculationDto
 {
     [Required]
     public TimeScaleEnum Timescale { get; set; }
-
+    
+    [Required]
     [Range(1, int.MaxValue, ErrorMessage = "Frequency must be at least 1")]
     public int Frequency { get; set; }
+    [Required]
+    [Range(1, int.MaxValue, ErrorMessage = "TimescaleValue must be at least 1")]
+    public int TimescaleValue { get; set; }
 }

@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -24,7 +25,11 @@ class ConfigurationHelper
         builder.Services.AddScoped<IAuthService, AuthService>();
         builder.Services.AddScoped<IPdfService, PdfService>();
         builder.Services.AddScoped<ICalculationService, CalculationService>();
-        builder.Services.AddControllers();
+        builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
 
         // Documentação
         builder.Services.AddEndpointsApiExplorer();
@@ -46,6 +51,8 @@ class ConfigurationHelper
                 In           = ParameterLocation.Header,
                 Description  = "Informe o token JWT. Exemplo: Bearer {seu_token}"
             });
+
+            c.UseInlineDefinitionsForEnums();
         });
 
         builder.Services.AddOpenApi();

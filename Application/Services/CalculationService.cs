@@ -40,12 +40,22 @@ public class CalculationService : ICalculationService
                 throw new ArgumentOutOfRangeException(nameof(category), category, "Categoria de cálculo inválida.");
         }
 
-        decimal totalValue = constant * dto.Frequency;
+        int timescaleMultiplier = dto.Timescale switch
+        {
+            TimeScaleEnum.D => 1,
+            TimeScaleEnum.M => 30,
+            TimeScaleEnum.Y => 365,
+            _ => throw new ArgumentOutOfRangeException(nameof(dto.Timescale), dto.Timescale, "Timescale inválido.")
+        };
+
+        int timescaleQuantity = dto.TimescaleValue * dto.Frequency * timescaleMultiplier;
+        decimal totalValue = constant * timescaleQuantity;
 
         var result = new EmissionCalculationResultDto
         {
             Timescale = dto.Timescale,
             Frequency = dto.Frequency,
+            TimescaleValue = dto.TimescaleValue,
             ConstantValue = constant,
             ConstantUnit = constantUnit,
             TotalValue = totalValue,

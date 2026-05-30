@@ -4,6 +4,7 @@ public class EmissionCalculationResultDto
 {
     public TimeScaleEnum Timescale { get; set; }
     public int Frequency { get; set; }
+    public int TimescaleValue { get; set; }
     public decimal ConstantValue { get; set; }
     public string ConstantUnit { get; set; } = null!;
     public decimal TotalValue { get; set; }

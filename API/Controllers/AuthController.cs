@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Taggy.Application.DTOs;
+using Taggy.Application.Interfaces;
+using Taggy.Application.Services;
 
 namespace Taggy.API.Controllers;
 
@@ -8,10 +10,12 @@ namespace Taggy.API.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IAuthService authService;
+    private readonly IPdfService pdfService;
 
-    public AuthController(IAuthService _authService)
+    public AuthController(IAuthService _authService, IPdfService _pdfService)
     {
         authService = _authService;
+        pdfService = _pdfService;
     }
 
     [HttpPost("register")]
@@ -42,4 +46,19 @@ public class AuthController : ControllerBase
             return Unauthorized(new { message = err.Message });
         }
     }
+
+    [HttpPost("pdf")]
+    public async Task<IActionResult> GeneratePdf()
+    {
+        try
+        {
+            byte[] pdfBytes = await pdfService.GeneratePdf();
+            return File(pdfBytes, "application/pdf", "relatorio.pdf");
+        }
+        catch (Exception err)
+        {
+            return BadRequest(new { message = err.Message });
+        }
+    }
+
 }

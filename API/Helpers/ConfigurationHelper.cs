@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using Taggy.Application.Interfaces;
 using Taggy.Application.Services;
 using Taggy.Domain.Interfaces;
 using Taggy.Infrastructure.Data;
@@ -21,6 +22,7 @@ class ConfigurationHelper
         // Injeção de dependências
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IAuthService, AuthService>();
+        builder.Services.AddScoped<IPdfService, PdfService>();
         builder.Services.AddControllers();
 
         // Documentação

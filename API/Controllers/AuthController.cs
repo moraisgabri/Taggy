@@ -47,18 +47,6 @@ public class AuthController : ControllerBase
         }
     }
 
-    [HttpPost("pdf")]
-    public async Task<IActionResult> GeneratePdf()
-    {
-        try
-        {
-            byte[] pdfBytes = await pdfService.GeneratePdf();
-            return File(pdfBytes, "application/pdf", "relatorio.pdf");
-        }
-        catch (Exception err)
-        {
-            return BadRequest(new { message = err.Message });
-        }
-    }
+    
 
 }

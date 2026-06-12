@@ -21,7 +21,7 @@ public class DownloadController : ControllerBase
     {
         try
         {
-            byte[] pdfBytes = await pdfService.GeneratePdf(dto.UserId);
+            byte[] pdfBytes = await pdfService.GeneratePdf(dto.Frequency, dto.Fuel, dto.Emission, dto.Paper);
             return File(pdfBytes, "application/pdf", "relatorio.pdf");
         }
         catch (Exception err)

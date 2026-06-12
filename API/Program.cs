@@ -8,7 +8,8 @@ builder.Configuration
     .SetBasePath(AppContext.BaseDirectory)
     .AddJsonFile("API/appsettings.json", optional: false, reloadOnChange: false)
     .AddJsonFile($"API/appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: false)
-    .AddEnvironmentVariables();
+    .AddEnvironmentVariables()
+    .AddCommandLine(args);
 
 ConfigurationHelper.ConfigureServices(builder);
 ConfigurationHelper.ConfigureAuthentication(builder);

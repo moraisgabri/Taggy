@@ -6,5 +6,5 @@ public interface IPdfService
 
 // Comment for git example 
 {
-  Task<byte[]> GeneratePdf(string userId);
+  Task<byte[]> GeneratePdf(int frequency, decimal fuel, decimal emission, decimal paper);
 }
